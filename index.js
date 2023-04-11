@@ -23,7 +23,7 @@ app.use(
 app.use("/user", userApi);
 
 app.get("/", (req, res) => {
-  res.status(200).send("Api for Login and Register");
+  res.status(200).send("Use /user/signin or /user/signup for getting data.");
 });
 
 app.listen(port, () => {
