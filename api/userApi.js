@@ -48,6 +48,10 @@ const generateOTP = () => {
   return otpnumber;
 };
 
+router.get("/", (req, res) => {
+  res.send("Ony signin and signup is allowed");
+});
+
 // signup
 router.post("/signup", async (req, res) => {
   try {
