@@ -22,6 +22,10 @@ app.use(
 
 app.use("/user", userApi);
 
+app.get("/", (req, res) => {
+  res.status(200).send("Api for Login and Register");
+});
+
 app.listen(port, () => {
   console.log(`server listening at port ${port}`);
 });
