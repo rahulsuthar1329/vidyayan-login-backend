@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import "./config/db.js";
 // Creating User Schema
 const UserSchema = new mongoose.Schema({
   name: String,
