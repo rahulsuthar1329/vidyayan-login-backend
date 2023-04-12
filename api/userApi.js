@@ -4,7 +4,7 @@ import otp, { generate } from "otp-generator";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import { Vonage } from "@vonage/server-sdk";
-import "../config/db.js";
+import database from "../config/db.js";
 
 dotenv.config();
 
@@ -55,6 +55,7 @@ router.get("/", (req, res) => {
 
 // signup
 router.post("/signup", async (req, res) => {
+  await database();
   try {
     let { name, email, password, mobile } = req.body;
     name = name.trim();
@@ -128,6 +129,7 @@ router.post("/signup", async (req, res) => {
 
 // signin
 router.post("/signin", async (req, res) => {
+  await database();
   try {
     let { email, password } = req.body;
     email = email.trim();

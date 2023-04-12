@@ -1,13 +1,20 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Database Connected Successfully!");
-  })
-  .catch((err) => {
-    console.log("Error connecting database : ", err);
-  });
+dotenv.config();
+const connectmongo = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("MongoDB connected");
+  } catch (error) {
+    console.log(
+      "-----------------------Mongo_connect_error--------------------"
+    );
+    console.log(error);
+  }
+};
+
+export default connectmongo;
