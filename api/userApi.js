@@ -5,7 +5,6 @@ import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import { Vonage } from "@vonage/server-sdk";
 import database from "../config/db.js";
-
 dotenv.config();
 
 // Create Rotuer
