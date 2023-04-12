@@ -72,27 +72,27 @@ router.post("/signup", async (req, res) => {
     };
 
     if (!name || !email || !password || !mobile) {
-      res.status(401).json({
+      res.status(200).json({
         message: "Invalid Input",
         success: false,
       });
     } else if (!/^[a-zA-Z ]*$/.test(name)) {
-      res.status(401).json({
+      res.status(200).json({
         message: "Invalid name",
         success: false,
       });
     } else if (!/^[\w-\.]+@([\w]+\.)+[\w-]{2,4}$/.test(email)) {
-      res.status(401).json({
+      res.status(200).json({
         message: "Invalid email",
         success: false,
       });
     } else if (password.length < 8) {
-      res.status(401).json({
+      res.status(200).json({
         message: "Invalid password",
         success: false,
       });
     } else if (!/^(\+([1-9][0-9]))?[1-9]\d{9}$/.test(mobile)) {
-      res.status(401).json({
+      res.status(200).json({
         message: "Invalid Mobile No.",
         success: false,
       });
@@ -126,7 +126,7 @@ router.post("/signup", async (req, res) => {
       }
     }
   } catch (error) {
-    res.status(500).json({
+    res.status(200).json({
       message: "An error occured while checking the existing user",
       success: false,
     });
@@ -164,14 +164,14 @@ router.post("/signin", async (req, res) => {
         success: true,
       });
     } else {
-      res.status(401).json({
+      res.status(200).json({
         success: false,
         message: "Invalid Credentials!",
       });
     }
   } catch (error) {
     res
-      .status(401)
+      .status(200)
       .json({ message: "Error occured while logging in!", success: false });
     console.log(error);
   }
