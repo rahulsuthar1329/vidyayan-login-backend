@@ -74,22 +74,27 @@ router.post("/signup", async (req, res) => {
     if (!name || !email || !password || !mobile) {
       res.status(401).json({
         message: "Invalid Input",
+        success: false,
       });
     } else if (!/^[a-zA-Z ]*$/.test(name)) {
       res.status(401).json({
         message: "Invalid name",
+        success: false,
       });
     } else if (!/^[\w-\.]+@([\w]+\.)+[\w-]{2,4}$/.test(email)) {
       res.status(401).json({
         message: "Invalid email",
+        success: false,
       });
     } else if (password.length < 8) {
       res.status(401).json({
         message: "Invalid password",
+        success: false,
       });
     } else if (!/^(\+([1-9][0-9]))?[1-9]\d{9}$/.test(mobile)) {
       res.status(401).json({
         message: "Invalid Mobile No.",
+        success: false,
       });
     } else {
       // check if the user already exists
@@ -98,6 +103,7 @@ router.post("/signup", async (req, res) => {
         // User already exists
         res.json({
           message: "User already exist. Go to Login Page.",
+          success: false,
         });
       } else {
         const newUser = new User({
@@ -115,12 +121,14 @@ router.post("/signup", async (req, res) => {
           user: result,
           message: "OTP sent to Email and SMS successfully.",
           otp: otpnumber,
+          success: true,
         });
       }
     }
   } catch (error) {
     res.status(500).json({
       message: "An error occured while checking the existing user",
+      success: false,
     });
     console.log(error);
   }
@@ -162,7 +170,9 @@ router.post("/signin", async (req, res) => {
       });
     }
   } catch (error) {
-    res.status(401).send("Error occured while logging in!");
+    res
+      .status(401)
+      .send({ message: "Error occured while logging in!", success: false });
     console.log(error);
   }
 });
