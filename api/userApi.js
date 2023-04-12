@@ -136,7 +136,7 @@ router.post("/signin", async (req, res) => {
 
     const user = await User.find({ email });
     console.log(user);
-    if (user[0].password === password) {
+    if (user.length && user[0].password === password) {
       const otpnumber = generateOTP();
 
       const mailOptions = {
