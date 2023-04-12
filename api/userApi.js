@@ -49,7 +49,7 @@ const generateOTP = () => {
 };
 
 router.get("/", (req, res) => {
-  res.send("Ony signin and signup is allowed");
+  res.json("Only signin and signup is allowed");
 });
 
 // signup
@@ -172,7 +172,7 @@ router.post("/signin", async (req, res) => {
   } catch (error) {
     res
       .status(401)
-      .send({ message: "Error occured while logging in!", success: false });
+      .json({ message: "Error occured while logging in!", success: false });
     console.log(error);
   }
 });
