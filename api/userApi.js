@@ -4,6 +4,7 @@ import otp, { generate } from "otp-generator";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import { Vonage } from "@vonage/server-sdk";
+import "./config/db.js";
 
 dotenv.config();
 
