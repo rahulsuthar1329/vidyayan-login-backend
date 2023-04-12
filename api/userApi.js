@@ -162,7 +162,7 @@ router.post("/signin", async (req, res) => {
       });
     }
   } catch (error) {
-    res.status(401).send(error.message);
+    res.status(401).send("Error occured while logging in!");
     console.log(error);
   }
 });
